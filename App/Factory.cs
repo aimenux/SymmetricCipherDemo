@@ -4,11 +4,6 @@ using Microsoft.Extensions.Options;
 
 namespace App
 {
-    public interface IFactory
-    {
-        IEnumerable<ICipher> GetCiphers();
-    }
-
     public class Factory : IFactory
     {
         private readonly IConverter _converter;
@@ -48,5 +43,10 @@ namespace App
                 InitializationVector = "Cy3S1aXjKlrHJ3ZoF+kk3g=="
             }));
         }
+    }
+
+    public interface IFactory
+    {
+        IEnumerable<ICipher> GetCiphers();
     }
 }

@@ -3,11 +3,6 @@ using Spectre.Console;
 
 namespace App
 {
-    public interface IService
-    {
-        void RenderCipherResults();
-    }
-
     public class Service : IService
     {
         private readonly IFactory _factory;
@@ -26,7 +21,7 @@ namespace App
             var table = new Table()
                 .BorderColor(Color.White)
                 .Border(TableBorder.Square)
-                .AddColumn(new TableColumn("[u]Name[/]").Centered())
+                .AddColumn(new TableColumn("[u]Algorithm[/]").Centered())
                 .AddColumn(new TableColumn("[u]ClearText[/]").Centered())
                 .AddColumn(new TableColumn("[u]Encrypted[/]").Centered())
                 .AddColumn(new TableColumn("[u]Decrypted[/]").Centered());
@@ -44,5 +39,10 @@ namespace App
             AnsiConsole.Render(table);
             AnsiConsole.WriteLine();
         }
+    }
+
+    public interface IService
+    {
+        void RenderCipherResults();
     }
 }

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Tests
 {
-    public static class HelperForTests
+    public static class CipherHelperForTests
     {
         private static readonly Random Random = new(Guid.NewGuid().GetHashCode());
 
@@ -19,6 +19,16 @@ namespace Tests
             var bytes = new byte[length];
             Random.NextBytes(bytes);
             return bytes;
+        }
+
+        public static string RandomSymmetricSecretKey(int length) => RandomBase64String(length);
+
+        public static string RandomInitializationVector(int length) => RandomBase64String(length);
+
+        private static string RandomBase64String(int length)
+        {
+            var bytes = RandomBytes(length);
+            return Convert.ToBase64String(bytes);
         }
     }
 }
